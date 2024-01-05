@@ -321,8 +321,11 @@ export default function EditStory({ storyPicOrVideo }) {
 
     const formData = new FormData();
     formData.append("image", file);
+    const s3UploadUrl = process.env.S3UPLOAD_URL
     const res = await fetch(
-      `http://localhost:3000/api/1.0/message/uploadImage`,
+      // `http://localhost:3000/api/1.0/message/uploadImage`
+      s3UploadUrl
+      ,
       {
         method: "POST",
         body: formData,
